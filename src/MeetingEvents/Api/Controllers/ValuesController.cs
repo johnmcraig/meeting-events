@@ -16,10 +16,10 @@ namespace Api.Controllers
         }
 
         // GET api/values
-        [HttpGet("")]
+        [HttpGet]
         public ActionResult<IEnumerable<string>> Getstrings() 
         {
-            return new List<string> { };
+            return new List<string> { "value1", "value2", "value3" };
         }
 
         // GET api/values/5
