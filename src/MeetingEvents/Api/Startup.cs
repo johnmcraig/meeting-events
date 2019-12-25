@@ -31,7 +31,7 @@ namespace Api
             {
                 opt.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
-            
+
             services.AddControllers();
         }
 
@@ -43,7 +43,7 @@ namespace Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
 
