@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
+import { Header, Icon } from 'semantic-ui-react';
 
 class App extends Component {
   state = {
     values: []
   }
   componentDidMount() {
-    this.setState({
-      values: [{id: 1, name: 'Value 101'}, {id: 2, name: 'Value 102'}]
-    })
+    axios.get('http://localhost:5000/api/values')
+      .then((response) => {
+        this.setState({
+          values: response.data
+        })
+      })
   }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <Header as='h2'>
+          <Icon name='users' />
+          <Header.Content>Meetings &amp; Events</Header.Content>
+        </Header>
+          <ul>
+            {this.state.values.map((values: any) => (
+             <li key={values.id}>
+              {values.name}
+             </li>
+          ))}
+          </ul>
+        
       </div>
     );
   }
