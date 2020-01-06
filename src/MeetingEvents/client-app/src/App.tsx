@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
-import { Header, Icon } from 'semantic-ui-react';
+import { Header, Icon, List } from 'semantic-ui-react';
 
 class App extends Component {
   state = {
@@ -22,18 +22,18 @@ class App extends Component {
           <Icon name='users' />
           <Header.Content>Meetings &amp; Events</Header.Content>
         </Header>
-          <ul>
-            {this.state.values.map((values: any) => (
-             <li key={values.id}>
+        <List>
+          {this.state.values.map((values: any) => (
+            <List.Item key={values.id}>
               {values.name}
-             </li>
+            </List.Item>
           ))}
-          </ul>
-        
+          <List.Item></List.Item>
+        </List>
       </div>
     );
   }
-  
+
 }
 
 export default App;
