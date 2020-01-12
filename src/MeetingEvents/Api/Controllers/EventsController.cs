@@ -14,18 +14,22 @@ namespace Api.Controllers
     public class EventsController : ControllerBase
     {
         private readonly IMediator _mediator;
+        
         public EventsController(IMediator mediator)
         {
             _mediator = mediator;
-
         }
 
-        // GET api/events
-        [HttpGet("")]
+        [HttpGet]
         public async Task<ActionResult<List<Event>>> GetAllToList()
         {
             return await _mediator.Send(new List.Query());
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Event>> Details(Guid id)
+        {
+            return await _mediator.Send(new Details.Query{Id = id});
+        }
     }
 }
