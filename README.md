@@ -13,7 +13,7 @@ The business logic is contained in the `Applications` directory, the Database an
 
 # Technologies
 The application is built with the following:
-- ASP.Net Core 2.2 for the web api
+- ASP.Net Core 3.1 for the web api
 - SingleR for real time updates
 - React 16 for the client UI/UX
 - Entity Framework Core as the ORM and SQL Server for the database

@@ -5,16 +5,16 @@ using Domain;
 using MediatR;
 using Persistence;
 
-namespace Application.Events
+namespace Application.Activitys
 {
     public class Details
     {
-        public class Query : IRequest<Event>
+        public class Query : IRequest<Activity>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Event>
+        public class Handler : IRequestHandler<Query, Activity>
         {
             private readonly DataDbContext _dbContext;
 
@@ -23,12 +23,12 @@ namespace Application.Events
                 _dbContext = dbContext;
             }
 
-            public async Task<Event> Handle(Query request, 
+            public async Task<Activity> Handle(Query request, 
                 CancellationToken cancellationToken)
             {
-                var singleEvent = await _dbContext.Events.FindAsync(request.Id);
+                var singleActivity = await _dbContext.Activities.FindAsync(request.Id);
 
-                return singleEvent;
+                return singleActivity;
             }
         }
     }
