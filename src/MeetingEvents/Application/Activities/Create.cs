@@ -5,7 +5,7 @@ using Domain;
 using MediatR;
 using Persistence;
 
-namespace Application.Activitys
+namespace Application.Activities
 {
     public class Create
     {
@@ -44,7 +44,9 @@ namespace Application.Activitys
 
                 _dbContext.Activities.Add(newActivity);
                 var success = await _dbContext.SaveChangesAsync() > 0;
+
                 if(success) return Unit.Value;
+                
                 throw new Exception("Problem saving changes");
             }
         }

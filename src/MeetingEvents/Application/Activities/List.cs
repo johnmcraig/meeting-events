@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Persistence;
 
-namespace Application.Activitys
+namespace Application.Activities
 {
     public class List
     {
@@ -42,9 +42,9 @@ namespace Application.Activitys
                 //     _logger.LogInformation("Task was cancelled");
                 // }
 
-                var Activitys = await _dbContext.Activities.ToListAsync();
+                var activities = await _dbContext.Activities.ToListAsync();
 
-                return Activitys;
+                return activities;
             }
         }
     }
