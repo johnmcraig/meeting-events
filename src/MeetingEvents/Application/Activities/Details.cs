@@ -23,8 +23,8 @@ namespace Application.Activities
                 _dbContext = dbContext;
             }
 
-            public async Task<Activity> Handle(Query request, 
-                CancellationToken cancellationToken)
+            public async Task<Activity> Handle(Query request,
+            CancellationToken cancellationToken)
             {
                 var singleActivity = await _dbContext.Activities.FindAsync(request.Id);
 
