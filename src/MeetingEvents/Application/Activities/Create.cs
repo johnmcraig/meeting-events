@@ -29,7 +29,8 @@ namespace Application.Activities
                 _dbContext = dbContext;
             }
 
-            public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
+            public async Task<Unit> Handle(Command request,
+            CancellationToken cancellationToken)
             {
                 var newActivity = new Activity
                 {
@@ -46,7 +47,7 @@ namespace Application.Activities
                 var success = await _dbContext.SaveChangesAsync() > 0;
 
                 if(success) return Unit.Value;
-                
+
                 throw new Exception("Problem saving changes");
             }
         }
