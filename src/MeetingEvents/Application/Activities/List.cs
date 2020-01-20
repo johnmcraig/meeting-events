@@ -17,31 +17,15 @@ namespace Application.Activities
         public class Handler : IRequestHandler<Query, List<Activity>>
         {
             private readonly DataDbContext _dbContext;
-            private readonly ILogger<List> _logger;
             
-            public Handler(DataDbContext dbContext, ILogger<List> logger)
+            public Handler(DataDbContext dbContext)
             {
-                _logger = logger;
                 _dbContext = dbContext;
             }
 
             public async Task<List<Activity>> Handle(Query request, 
             CancellationToken cancellationToken)
             {
-                // try
-                // {
-                //     for(var i=0; i<10; i++)
-                //     {
-                //         cancellationToken.ThrowIfCancellationRequested();
-                //         await Task.Delay(100, cancellationToken);
-                //         _logger.LogInformation($"Task {i} has completed");
-                //     }
-                // }
-                // catch (System.Exception ex) when (ex is TaskCanceledException) 
-                // {
-                //     _logger.LogInformation("Task was cancelled");
-                // }
-
                 var activities = await _dbContext.Activities.ToListAsync();
 
                 return activities;
