@@ -10,6 +10,7 @@ namespace Application.Activities
     {
         public class Command : IRequest
         {
+            public Guid Id { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -23,7 +24,11 @@ namespace Application.Activities
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                // handler logic
+                var activity = await _dbContext.Activities.FindAsync(request.Id);
+
+                if (activity == null) throw new Exception("Could not find activity");
+
+                _dbContext.Remove(activity);
 
                 var success = await _dbContext.SaveChangesAsync() > 0;
 
