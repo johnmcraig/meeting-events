@@ -11,7 +11,7 @@ namespace Persistence
         {
             if(!dbContext.Activities.Any())
             {
-                var Activitys = new List<Activity>
+                var activities = new List<Activity>
                 {
                     new Activity
                     {
@@ -105,7 +105,7 @@ namespace Persistence
                     }
                 };
 
-                dbContext.Activities.AddRange(Activitys);
+                dbContext.Activities.AddRange(activities);
                 dbContext.SaveChanges();
             }
         }
