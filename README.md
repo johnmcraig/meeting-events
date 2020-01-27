@@ -12,7 +12,7 @@ This application centers around the use of separating logic layers in different 
 
 The overall program is divided up into smaller, loosely coupled projects for Domain Driven Design patterns based on Uncle Bob's clean architecture.
 
-The projects are contained in a source folder `src/` under a directory named `MeetingEvents` (naming this originally has been hard and ongoing change), containing a solution file for use with Visual Studio.
+The projects are contained in a source folder `src/` under a directory named `MeetingFinder` (naming this has been an ongoing change), containing a solution file for use with Visual Studio.
 
 The business logic is contained in the `Applications` directory, the Database and ORM tools are in the `Persistence`, The domain eccentric universe, that is not dependent on any other projects, is in the `Domain`. Finally, the web API is located in the `Api`, which contains our controller (RESTful) endpoints.
 
