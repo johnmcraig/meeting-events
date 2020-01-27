@@ -1,37 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
-import { Header, Icon, List } from 'semantic-ui-react';
+import { Header, Icon, List, Container } from 'semantic-ui-react';
+import { IActivity } from '../models/activity';
+import Navbar from '../../features/nav/navbar';
+import MeetingDashboard from '../../features/meeting/MeetingDashboard';
 
-class App extends Component {
-  state = {
-    values: []
-  }
-  componentDidMount() {
-    axios.get('http://localhost:5000/api/values')
+const App = () => {
+  const [activities, setActivities] = useState<IActivity[]>([]);
+  useEffect(() => {
+    axios.get<IActivity[]>('http://localhost:5000/api/activities')
       .then((response) => {
-        this.setState({
-          values: response.data
-        })
-      })
-  }
-  render() {
-    return (
-      <div>
+        setActivities(response.data)
+      });
+  }, []);
+
+  return (
+    <div>
+      <Navbar />
+      <Fragment/>
+      <Container style={{marginTop: '7em'}}>
         <Header as='h2'>
           <Icon name='users' />
-          <Header.Content>Meetings &amp; Events</Header.Content>
+          <Header.Content>Meeting Finder</Header.Content>
         </Header>
-        <List>
-          {this.state.values.map((values: any) => (
-            <List.Item key={values.id}>
-              {values.name}
-            </List.Item>
-          ))}
-          <List.Item></List.Item>
-        </List>
-      </div>
-    );
-  }
+        <MeetingDashboard activities={activities}/>
+      </Container>
+    </div>
+  );
 
 }
 
