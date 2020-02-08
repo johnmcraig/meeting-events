@@ -1,7 +1,9 @@
 using Application.Activities;
+using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -39,6 +41,13 @@ namespace Api
             services.AddMediatR(typeof(List.Handler).Assembly);
 
             services.AddControllers();
+            // services.AddMvc();
+
+            var builder = services.AddIdentityCore<AppUser>();
+            var identityBuilder = new IdentityBuilder(builder.UserType, builder.Services);
+            identityBuilder.AddEntityFrameworkStores<DataDbContext>();
+            identityBuilder.AddSignInManager<SignInManager<AppUser>>();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
