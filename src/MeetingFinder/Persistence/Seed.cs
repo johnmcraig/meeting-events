@@ -40,6 +40,7 @@ namespace Persistence
                    await userManager.CreateAsync(user);
                 }
             }
+            
             if(!dbContext.Activities.Any())
             {
                 var activities = new List<Activity>
