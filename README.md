@@ -22,7 +22,7 @@ The application is built with the following:
 
 - ASP.Net Core 3.1 for the web api
 - SingleR
-- MediatR for clean architecture
+- MediatR for clean architecture and implementing the CQRS pattern
 - React 16 for the client UI/UX
 - Entity Framework Core as the ORM and soon PostgreSQL for the database
 - Azure for cloud hosting
