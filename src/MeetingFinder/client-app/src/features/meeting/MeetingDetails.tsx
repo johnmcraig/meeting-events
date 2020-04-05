@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const MeetingDetail = () => {
+export const MeetingDetails = () => {
     return (
         <div>
             
